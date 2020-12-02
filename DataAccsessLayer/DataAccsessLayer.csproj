@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.9.3.0\lib\net461\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,6 +56,8 @@
   <ItemGroup>
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\Repository.cs" />
+    <Compile Include="DTOs\KullaniciDTOs.cs" />
+    <Compile Include="DTOs\ResponseModel.cs" />
     <Compile Include="EntityFramework\DataContext.cs" />
     <Compile Include="EntityFramework\Initializer.cs" />
     <Compile Include="EntityRepositories\AdminRepository.cs" />
@@ -63,6 +68,12 @@
     <Compile Include="Procedures\Procedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Validation\FluentValidation\KategoriValidator.cs" />
+    <Compile Include="Validation\FluentValidation\KullaniciValidator.cs" />
+    <Compile Include="Validation\FluentValidation\MarkaValidator.cs" />
+    <Compile Include="Validation\FluentValidation\ModelValidator.cs" />
+    <Compile Include="Validation\FluentValidation\MusteriValidator.cs" />
+    <Compile Include="Validation\FluentValidation\SatisValidator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -76,6 +76,7 @@
                  return false;
              }
          });
+         */
 
          $("#myForm").on("submit", function (event) {
              event.preventDefault();
@@ -94,19 +95,7 @@
                  }
              });
 
-         });*/
-        $("#myForm").submit(function (event) {
-            event.preventDefault();
-            $("#productList").empty();
-            var post_url = "kullaniciEkle";
-            var form_data = $(this).serialize();
-
-            $.post(post_url, form_data, function (response) {
-                $.each(response, function (index, value) {
-                    $("#productList").append('<li>' + value.PropertyName + ': ' + value.ErrorMessage + '</li>');
-                });
-            });
-        });
+         });
     </script>
 
 }

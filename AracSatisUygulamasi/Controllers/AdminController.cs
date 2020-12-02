@@ -1,6 +1,9 @@
-﻿using DataAccsessLayer.Abstract;
+﻿
+using DataAccsessLayer.Abstract;
+using DataAccsessLayer.DTOs;
 using DataAccsessLayer.EntityRepositories;
 using DataEntity;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace AracSatisUygulamasi.Controllers
@@ -20,22 +23,20 @@ namespace AracSatisUygulamasi.Controllers
         }
 
         [HttpPost]
-        public ActionResult kullaniciEkle(TBL_KULLANICI k1)
+        public ResponseModel kullaniciEkle(TBL_KULLANICI k1)
         {
-           
-            if (!ModelState.IsValid)                                   //bize bunu gezerli olup olmadığını söyledi
-            {
-                return View(k1);
-            }
-            else
-            {
-                AdminRepository adRep = new AdminRepository();
-                var adminEkle = adRep.kullaniciEkle(k1);
-                return RedirectToAction(nameof(kullaniciEkle));
-            }
-           // return Json(k1, JsonRequestBehavior.AllowGet);
+            AdminRepository adRep = new AdminRepository();
+            var adminEkle = adRep.kullaniciEkle(k1);
+            return adminEkle;
 
+        }
 
+        [HttpGet]
+        public JsonResult GetKullaniciList()
+        {
+            AdminRepository adRep = new AdminRepository();
+            var list = adRep.List();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
 

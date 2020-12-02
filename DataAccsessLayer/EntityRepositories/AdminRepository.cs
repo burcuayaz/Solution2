@@ -1,4 +1,5 @@
 ﻿using DataAccsessLayer.Abstract;
+using DataAccsessLayer.DTOs;
 using DataEntity;
 using DataEntity.ValidationRules.FluentValidation;
 using System;
@@ -19,12 +20,55 @@ namespace DataAccsessLayer.EntityRepositories
             return KullaniciList;
         }
 
-
-        public List<string> kullaniciEkle(TBL_KULLANICI kul)
+        
+        public ResponseModel kullaniciEkle(TBL_KULLANICI kul)
         {
-            this.Insert(kul);
+            ResponseModel respons = new ResponseModel();
+            List<Hatas> hatas = new List<Hatas>();
+            KullaniciValidator kulValidation = new KullaniciValidator();
+            var errorOrSucces = kulValidation.Validate(kul);
+            if (errorOrSucces.Errors.Count==0)
+            {
+                try
+                {
 
-            return null;
+                    this.Insert(kul);
+                    hatas.Add(new Hatas
+                    {
+                        Message = "İşlem Başarılı"
+                    });
+                    respons.Code = 1;
+                    respons.Message = "Succes";
+                    respons.Data = hatas;
+
+                }
+                catch (Exception ex)
+                {
+                    hatas.Add(new Hatas
+                    {
+                        Message = ex.ToString()
+                    });
+                    respons.Code = 3;
+                    respons.Message = "Error";
+                    respons.Data = hatas;
+                }
+            }
+            else
+            {
+                foreach (var item in errorOrSucces.Errors)
+                {
+                    hatas.Add(new Hatas
+                    {
+                        Message =item.ErrorMessage
+                    });
+                }
+                respons.Code = 3;
+                respons.Message = "Error";          
+                respons.Data = hatas;
+
+            }
+
+            return respons;
         }
     }
 }

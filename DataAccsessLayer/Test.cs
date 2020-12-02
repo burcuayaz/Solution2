@@ -11,8 +11,8 @@ namespace DataAccsessLayer
     {
         public Test()
         {
-           DataContext db = new DataContext();
-            db.Database.CreateIfNotExists();
+         //  DataContext db = new DataContext();
+        //    db.Database.CreateIfNotExists();
         }
     }
 }
