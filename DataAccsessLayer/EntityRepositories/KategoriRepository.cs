@@ -1,7 +1,6 @@
 ﻿
 using DataAccsessLayer.Abstract;
 using DataEntity;
-using DataEntity.ValidationRules.FluentValidation;
 //using DataEntity.EntityFramework;
 using System;
 using System.Collections.Generic;

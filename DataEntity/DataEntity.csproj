@@ -93,12 +93,6 @@
     <Compile Include="TBL_MODEL.cs" />
     <Compile Include="TBL_MUSTERILER.cs" />
     <Compile Include="TBL_SATIS.cs" />
-    <Compile Include="ValidationRules\FluentValidation\KategoriValidator.cs" />
-    <Compile Include="ValidationRules\FluentValidation\KullaniciValidator.cs" />
-    <Compile Include="ValidationRules\FluentValidation\MarkaValidator.cs" />
-    <Compile Include="ValidationRules\FluentValidation\ModelValidator.cs" />
-    <Compile Include="ValidationRules\FluentValidation\MusteriValidator.cs" />
-    <Compile Include="ValidationRules\FluentValidation\SatisValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

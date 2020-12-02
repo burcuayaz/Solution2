@@ -1,7 +1,7 @@
 ﻿using DataAccsessLayer.Abstract;
 using DataAccsessLayer.DTOs;
+using DataAccsessLayer.Validation.FluentValidation;
 using DataEntity;
-using DataEntity.ValidationRules.FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +59,7 @@ namespace DataAccsessLayer.EntityRepositories
                 {
                     hatas.Add(new Hatas
                     {
-                        Message =item.ErrorMessage
+                        Message =item.ErrorMessage //kaç tane hata varsa burda listeleyip döndürüyor
                     });
                 }
                 respons.Code = 3;

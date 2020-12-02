@@ -23,11 +23,11 @@ namespace AracSatisUygulamasi.Controllers
         }
 
         [HttpPost]
-        public ResponseModel kullaniciEkle(TBL_KULLANICI k1)
+        public JsonResult kullaniciEkle(TBL_KULLANICI k1)
         {
             AdminRepository adRep = new AdminRepository();
             var adminEkle = adRep.kullaniciEkle(k1);
-            return adminEkle;
+            return Json(adminEkle);
 
         }
 

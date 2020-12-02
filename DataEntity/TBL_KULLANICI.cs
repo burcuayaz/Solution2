@@ -1,5 +1,4 @@
-﻿using DataEntity.ValidationRules.FluentValidation;
-using FluentValidation.Attributes;
+﻿using FluentValidation.Attributes;
 using System;
 using System.Collections.Generic;
 
