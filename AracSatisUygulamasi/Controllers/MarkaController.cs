@@ -25,5 +25,26 @@ namespace AracSatisUygulamasi.Controllers
             return View(marList);
 
         }
+        [HttpGet]
+        public ActionResult markaEkle()
+        {
+            KategoriRepository repoKategori = new KategoriRepository();
+            var a= repoKategori.List().Select(x =>new SelectListItem { Text = x.KATEGORI_ADI, Value =x.ID.ToString() }).ToList();
+            ViewBag.kategoriList = a;
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult markaEkle(int kategoriList,string MARKA_ADI)
+        {
+            MarkaRepository marRep = new MarkaRepository();
+            var markaEkle = marRep.markaEkle(new TBL_MARKA { 
+                KATEGORI_ID=kategoriList,
+                MARKA_ADI=MARKA_ADI
+            });
+            return Json(markaEkle);
+
+        }
+
     }
 }

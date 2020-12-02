@@ -13,8 +13,7 @@ namespace AracSatisUygulamasi.Controllers
 {
     public class ModelController : Controller
     {
-        // Repository<TBL_MODEL> repoModel = new Repository<TBL_MODEL>();
-
+        
         // GET: Model
         public ActionResult Index(string Kategori, string Marka)
         {
@@ -41,6 +40,9 @@ namespace AracSatisUygulamasi.Controllers
             return View(modList);
         }
 
+
+
+       
 
 
     }

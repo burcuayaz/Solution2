@@ -1,0 +1,87 @@
+﻿@model DataEntity.TBL_MARKA
+@{
+    ViewBag.Title = "markaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    #productList {
+        color: red;
+    }
+</style>
+
+<form id="myForm" class="form-horizontal" role="form">
+
+
+
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Kategoriler</label>
+        <div class="col-sm-10">
+            @Html.DropDownList("kategoriList", (IEnumerable<SelectListItem>)ViewBag.kategoriList, new { id = "kategoriList", @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Marka Adı</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.MARKA_ADI, new { @class = "form-control", placeholder = "Lütfen Marka adını giriniz..", })
+            @Html.ValidationMessageFor(m => m.MARKA_ADI)
+        </div>
+    </div>
+
+    <div id="texnwords"></div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Kaydet</button>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+            $("#myForm").on("submit", function (event) {
+                event.preventDefault();
+                var obj = $('form#myForm').serializeJSON();
+                console.log(obj);
+                $("#texnwords").empty();
+
+                $.ajax({
+                    url: "markaEkle",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: obj,
+                    success: function (response) {
+                        console.log(response.Data);//başarılı ise    resposenin içine geri donen veri gelir
+                        if (response.Code=="1") {  // eğer bir ise başarılı
+                            swal({
+                                title: "Başarılı!",  //üst başlık
+                                text: response.Data.Message,  //responsenin içinde gelen mesaj
+                                icon: "success",   // iconun türü
+                                buttons: true,    //tamam dedikten sonra ekranı yenilemesi için reload kodu ekledim.
+                            }).then((willDelete) => {
+                                location.reload();
+                            });;
+
+                        }
+                        else {
+                            var sub_ul = $('<ul/>');
+                            $.each(response.Data, function (index, value) {
+                                var sub_li = $('<li/>').html(value.Message);
+                                sub_ul.append(sub_li);
+                            });
+                            $("#texnwords").append(sub_ul);
+                        }
+
+
+                    },
+                    error: function (data) {
+                        console.log(data); //hata aldığımızda
+                    }
+                });
+
+            });
+    </script>
+
+}

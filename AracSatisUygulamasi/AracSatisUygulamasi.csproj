@@ -133,6 +133,8 @@
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\MarkaController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
+    <Compile Include="Controllers\MusteriController.cs" />
+    <Compile Include="Controllers\SatisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -490,6 +492,11 @@
     <Content Include="Views\Marka\Index.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\ModelDetay.cshtml" />
+    <Content Include="Views\Admin\GetKullaniciList.cshtml" />
+    <Content Include="Views\Musteri\GetMusteriList.cshtml" />
+    <Content Include="Views\Musteri\musteriEkle.cshtml" />
+    <Content Include="Views\Marka\markaEkle.cshtml" />
+    <Content Include="Views\Satis\GetSatisList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

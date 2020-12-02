@@ -1,0 +1,108 @@
+﻿@model DataEntity.TBL_MUSTERILER
+@{
+    ViewBag.Title = "musteriEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    #productList {
+        color: red;
+    }
+</style>
+
+<form id="myForm2" class="form-horizontal" role="form">
+
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">AD SOYAD</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.ADSOYAD, new { @class = "form-control", placeholder = "Lütfen adınızı ve soyadınızı giriniz..", tabindex = 1 })
+            @Html.ValidationMessageFor(m => m.ADSOYAD)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">TELEFON</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.TELEFON, new { @class = "form-control", placeholder = "Lütfen soyadınızı giriniz..", tabindex = 2 })
+            @Html.ValidationMessageFor(m => m.TELEFON)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge2" class="col-sm-2 control-label">ADRES</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.ADRES, new { @class = "form-control",placeholder = "Lütfen mail adresinizi giriniz..", tabindex = 3 })
+            @Html.ValidationMessageFor(m => m.ADRES)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge2" class="col-sm-2 control-label">MAIL</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.MAIL, new { @class = "form-control", @type = "email", placeholder = "Lütfen telefon numaranızı giriniz..", tabindex = 3 })
+            @Html.ValidationMessageFor(m => m.MAIL)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">KAYIT TARİHİ</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.KAYIT_TARIHI, new { @class = "form-control",@type="date", placeholder = "Lütfen kullanıcı adınızı giriniz..", tabindex = 5 })
+            @Html.ValidationMessageFor(m => m.KAYIT_TARIHI)
+        </div>
+    </div>
+    <div id="errorList"></div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Kaydet</button>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+            $("#myForm2").on("submit", function (event) {
+                event.preventDefault();
+                var obj = $('form#myForm2').serializeJSON();    //formu jsona çevir
+                console.log(obj);
+                $("#errorList").empty();   //errorListi inside  temizler
+
+                $.ajax({
+                    url: "musteriEkle",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: obj,
+                    success: function (response) {
+                        console.log(response.Data);//başarılı ise    resposenin içine geri donen veri gelir
+                        if (response.Code=="1") {  // eğer bir ise başarılı
+                            swal({
+                                title: "Başarılı!",  //üst başlık
+                                text: response.Data.Message,  //responsenin içinde gelen mesaj
+                                icon: "success",   // iconun türü
+                                buttons: true,    //tamam dedikten sonra ekranı yenilemesi için reload kodu ekledim.
+                            }).then((willDelete) => {
+                                location.reload();
+                            });;
+
+                        }
+                        else {
+                            var sub_ul = $('<ul/>');
+                            $.each(response.Data, function (index, value) {
+                                var sub_li = $('<li/>').html(value.Message);
+                                sub_ul.append(sub_li);
+                            });
+                            $("#errorList").append(sub_ul);
+                        }
+
+
+                    },
+                    error: function (data) {
+                        console.log(data); //hata aldığımızda
+                    }
+                });
+
+            });
+    </script>
+
+}
+

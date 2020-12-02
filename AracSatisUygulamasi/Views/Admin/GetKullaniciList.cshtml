@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataEntity.TBL_KULLANICI>
+@{
+    ViewBag.Title = "GetKullaniciList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Kullanıcı Adı</th>
+            <th scope="col">Şifre</th>
+        </tr>
+    </thead>
+    @foreach (var k in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@k.ID</td>
+                <td>@k.AD</td>
+                <td>@k.SOYAD</td>
+                <td>@k.MAIL</td>
+                <td>@k.TELEFON</td>
+                <td>@k.KULLANICI_ADI  </td>
+                <td>@k.SIFRE</td>
+            </tr>
+        </tbody>
+    }
+    </table>

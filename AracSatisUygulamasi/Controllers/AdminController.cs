@@ -16,6 +16,10 @@ namespace AracSatisUygulamasi.Controllers
             return View();
         }
 
+
+
+
+
         [HttpGet]
         public ActionResult kullaniciEkle()
         {
@@ -31,12 +35,16 @@ namespace AracSatisUygulamasi.Controllers
 
         }
 
+
+
+
+
         [HttpGet]
-        public JsonResult GetKullaniciList()
+        public ActionResult GetKullaniciList()
         {
             AdminRepository adRep = new AdminRepository();
             var list = adRep.List();
-            return Json(list, JsonRequestBehavior.AllowGet);
+            return View(list);
         }
 
 

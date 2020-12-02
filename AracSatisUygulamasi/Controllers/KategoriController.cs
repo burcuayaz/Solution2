@@ -11,34 +11,19 @@ namespace AracSatisUygulamasi.Controllers
         public ActionResult kategoriEkle()
         {
             return View();
-
         }
 
-        /*  [HttpPost]
-          public ActionResult kategoriEkle(TBL_KATEGORILER p1)
-          {
-              KategoriRepository katRep = new KategoriRepository();
-              var katEkle = katRep.Insert(p1);
-              return View();
-          }
-        */
         [HttpPost]
-        public ActionResult kategoriEkle(TBL_KATEGORILER p1)
+        public JsonResult kategoriEkle(TBL_KATEGORILER k1)
         {
-
-            if (!ModelState.IsValid)                                   //bize bunu gezerli olup olmadığını söyledi
-            {
-                return View(p1);
-            }
-            else
-            {
-                KategoriRepository adRep = new KategoriRepository();
-                var adminEkle = adRep.kategoriEkle(p1);
-                return RedirectToAction(nameof(kategoriEkle));
-            }
-
+            KategoriRepository katRep = new KategoriRepository();
+            var kategoriEkle = katRep.kategoriEkle(k1);
+            return Json(kategoriEkle);
 
         }
+
+
+
 
 
         public ActionResult Index()

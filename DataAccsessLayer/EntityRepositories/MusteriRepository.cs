@@ -2,50 +2,36 @@
 using DataAccsessLayer.DTOs;
 using DataAccsessLayer.Validation.FluentValidation;
 using DataEntity;
-//using DataEntity.EntityFramework;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static DataAccsessLayer.ProdecureModels.ProdecureModels;
 
 namespace DataAccsessLayer.EntityRepositories
 {
-    public class MarkaRepository : Repository<TBL_MARKA>
+   public  class MusteriRepository:Repository<TBL_MUSTERILER>
     {
-        public List<TBL_MARKA> MarkaList(string KatAdi)
+        public List<TBL_MUSTERILER> KullaniciList()
         {
-            var markaList = this.List();
-            return markaList;
-        }
-        public List<TBL_MARKA> MarkaAdinaGoreListele(string MarAdi)
-        {
-            var markaList = this.IList(x => x.MARKA_ADI == MarAdi);
-            return markaList;
+            var MusteriList = this.List();
+
+            return MusteriList;
         }
 
 
-        public List<TBL_MARKA> MarkaListFunc(Func<object, bool> p)
-        {
-            return (List<TBL_MARKA>)this.List().Where(p);
-        }
-
-
-
-        public ResponseModel markaEkle(TBL_MARKA mar)
+        public ResponseModel musteriEkle(TBL_MUSTERILER mus)
         {
             ResponseModel respons = new ResponseModel();
             List<Hatas> hatas = new List<Hatas>();
-            MarkaValidator marValidation = new MarkaValidator();
-            var errorOrSucces = marValidation.Validate(mar);
+            MusteriValidator musValidation = new MusteriValidator();
+            var errorOrSucces = musValidation.Validate(mus);
             if (errorOrSucces.Errors.Count == 0)
             {
                 try
                 {
 
-                    this.Insert(mar);
+                    this.Insert(mus);
                     hatas.Add(new Hatas
                     {
                         Message = "İşlem Başarılı"
@@ -84,5 +70,4 @@ namespace DataAccsessLayer.EntityRepositories
             return respons;
         }
     }
-
 }

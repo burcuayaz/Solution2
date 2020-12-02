@@ -1,13 +1,17 @@
 ﻿using DataAccsessLayer.Abstract;
+using DataAccsessLayer.DTOs;
+using DataAccsessLayer.Validation.FluentValidation;
 using DataEntity;
-//using DataEntities.EntityFramework;
+//using DataEntity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using static DataAccsessLayer.ProdecureModels.ProdecureModels;
+
 
 namespace DataAccsessLayer.EntityRepositories
 {
@@ -25,6 +29,9 @@ namespace DataAccsessLayer.EntityRepositories
             return modelList;
         }
 
+
+        
+             
     }
 
 

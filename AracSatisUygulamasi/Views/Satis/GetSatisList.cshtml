@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DataEntity.TBL_SATIS>
+
+@{
+    ViewBag.Title = "GetSatisList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Kategori id</th>
+                <th scope="col">Marka id</th>
+                <th scope="col">Model id</th>
+                <th scope="col">Müşteri id</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Tarih</th>
+
+            </tr>
+        </thead>
+        @foreach (var k in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@k.ID</td>
+                    <td>@k.KATEGORI_ID</td>
+                    <td>@k.MARKA_ID</td>
+                    <td>@k.MODEL_ID</td>
+                    <td>@k.MUSTERI_ID</td>
+                    <td>@k.ADET</td>
+                    <td>@k.FIYAT</td>
+                    <td>@k.TARIH</td>
+
+                </tr>
+            </tbody>
+        }
+    </table>
