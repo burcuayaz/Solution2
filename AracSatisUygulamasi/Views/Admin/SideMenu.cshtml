@@ -1,0 +1,11 @@
+﻿@model List<DataEntity.TBL_KATEGORILER>
+<ul class="list-unstyled navbar__sub-list js-sub-list" style="@(Request.Url.ToString().Contains("kategori") ? "display:block":"")">
+    @foreach (var k in Model)
+    {
+        <li>
+            <a href="../Marka?Kategori=@k.KATEGORI_ADI" style="@(Request.Url.ToString().Contains(k.KATEGORI_ADI) ? "color: red":"")">@k.KATEGORI_ADI</a>
+        </li>
+
+    }
+
+</ul>

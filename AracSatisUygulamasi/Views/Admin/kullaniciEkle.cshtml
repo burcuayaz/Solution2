@@ -1,0 +1,113 @@
+﻿@model DataEntity.TBL_KULLANICI
+@{
+    ViewBag.Title = "kullaniciEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    #productList{
+        color:red;
+    }
+</style>
+
+  
+<form id="myForm" class="form-horizontal" role="form">
+    <ul id="productList" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"></ul>
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Ad</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.AD, new { @class = "form-control", placeholder = "Lütfen adınızı giriniz..", tabindex = 1 })
+            @Html.ValidationMessageFor(m => m.AD)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Soyad</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.SOYAD, new { @class = "form-control", placeholder = "Lütfen soyadınızı giriniz..", tabindex = 2 })
+            @Html.ValidationMessageFor(m => m.SOYAD)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge2" class="col-sm-2 control-label">Mail</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.MAIL, new { @class = "form-control", placeholder = "Lütfen mail adresinizi giriniz..", tabindex = 3 })
+            @Html.ValidationMessageFor(m => m.MAIL)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge2" class="col-sm-2 control-label">Telefon</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.TELEFON, new { @class = "form-control", placeholder = "Lütfen telefon numaranızı giriniz..", tabindex = 3 })
+            @Html.ValidationMessageFor(m => m.TELEFON)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Kullanıcı Adı</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.KULLANICI_ADI, new { @class = "form-control", placeholder = "Lütfen kullanıcı adınızı giriniz..", tabindex = 5 })
+            @Html.ValidationMessageFor(m => m.KULLANICI_ADI)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formGroupInputLarge1" class="col-sm-2 control-label">Şifre</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.SIFRE, new { @class = "form-control", placeholder = "Lütfen şifrenizi giriniz..", tabindex = 6 })
+            @Html.ValidationMessageFor(m => m.AD)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Kaydet</button>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        /* $('#btnSubmit').click(function () {
+
+             if ($("form#myForm").valid()) {
+                 $("form#myForm").submit();
+             }
+             else {
+                 return false;
+             }
+         });
+
+         $("#myForm").on("submit", function (event) {
+             event.preventDefault();
+             var obj = $('form#myForm').serializeJSON();
+             console.log(obj);
+             $.ajax({
+                 url: "kullaniciEkle",
+                 type: "POST",
+                 contentType: 'application/json',
+                 data: obj,
+                 success: function (data) {
+                     console.log(data);//başarılı ise
+                 },
+                 error: function (data) {
+                     console.log(data); //hata aldığımızda
+                 }
+             });
+
+         });*/
+        $("#myForm").submit(function (event) {
+            event.preventDefault();
+            $("#productList").empty();
+            var post_url = "kullaniciEkle";
+            var form_data = $(this).serialize();
+
+            $.post(post_url, form_data, function (response) {
+                $.each(response, function (index, value) {
+                    $("#productList").append('<li>' + value.PropertyName + ': ' + value.ErrorMessage + '</li>');
+                });
+            });
+        });
+    </script>
+
+}
+

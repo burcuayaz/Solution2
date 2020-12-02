@@ -1,0 +1,24 @@
+﻿
+@model IEnumerable<DataAccsessLayer.ProdecureModels.ProdecureModels.MODEL_ARAC_LIST>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="d-flex flex-column justify-content-center">
+
+    <p class="h1 text-center"> Markalar</p>
+    <div class="d-flex flex-wrap justify-content-around">
+        @foreach (var k in Model)
+        {
+
+            <div class="card m-r-10 " style="width: 18rem;">
+                <img class="card-img-top" src="https://media.zigcdn.com/media/model/2020/Jun/swift_360x240.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@k.MARKA_ADI</h5>
+                    <a href="../Model?Kategori=@k.KATEGORI_ADI&Marka=@k.MARKA_ADI" class="btn btn-primary">Araca Git</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

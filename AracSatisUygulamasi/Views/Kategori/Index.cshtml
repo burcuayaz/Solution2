@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<DataEntity.TBL_KATEGORILER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-lg-9">
+    <h2 class="title-1 m-b-25">Kategoriler</h2>
+    <div class="table-responsive table--no-card m-b-40">
+        <table class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>Kategori Adı</th>
+
+                </tr>
+            </thead>
+            @foreach (var k in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td href="../Model?kategori=@k.KATEGORI_ADI">@k.KATEGORI_ADI</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+

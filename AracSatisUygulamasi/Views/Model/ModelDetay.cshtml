@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DataAccsessLayer.ProdecureModels.ProdecureModels.MODEL_DETAY>
+
+@{
+    ViewBag.Title = "ModelDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+
+    <h2>Arac Detay</h2>
+    @foreach (var k in Model)
+    {
+        <div class="card" style="width: 35rem;">
+            <img class="card-img-top" src="@k.RESIM" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@k.MARKA_ADI</h5>
+                <p class="card-text">@k.ACIKLAMA</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@k.RENK</li>
+                <li class="list-group-item">@k.MOTOR_HACMI</li>
+                <li class="list-group-item">@k.MOTOR_GUCU</li>
+                <li class="list-group-item">@k.FIYAT</li>
+                <li class="list-group-item">@k.VITES_TURU</li>
+                <li class="list-group-item">@k.ACIKLAMA</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+
+            </div>
+        </div>
+    }
+</div>
