@@ -8,13 +8,10 @@ namespace DataAccsessLayer.DTOs
 {
    public  class KullaniciDTOs
     {
-            public string Ad { get; set; }
-            public string Soyad { get; set; }
-            public string Mail { get; set; }
-            public decimal Telefon { get; set; }
-            public int KullaniciAdi { get; set; }
-            public int Sifre { get; set; }
+            public string KullaniciAdi { get; set; }//ırkçılık yapmayacam asdasdasd bugün çok duyarlıyım asdsadasd
+            public string Sifre { get; set; }
 
+       
     }
 
 }

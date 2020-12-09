@@ -4,22 +4,55 @@ using DataAccsessLayer.DTOs;
 using DataAccsessLayer.EntityRepositories;
 using DataEntity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-
+using System.Web.Security;
 
 namespace AracSatisUygulamasi.Controllers
 {
+
     public class AdminController : Controller
     {
-        // GET: Admin
+       
         public ActionResult Index()
         {
             return View();
         }
+        // GET: Admin
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+      
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Login(KullaniciDTOs kullanici)
+        {
+            KullaniciDTOs kulDTO = new KullaniciDTOs();
+            var result = new AdminRepository().List().FirstOrDefault(x => x.KULLANICI_ADI.Contains(kullanici.KullaniciAdi) && x.SIFRE.Contains(kullanici.Sifre));
+            if (result != null)
+            {
+                FormsAuthentication.SetAuthCookie(result.KULLANICI_ADI, false);
+                return RedirectToAction("Index","Admin");
+            }
+            else
+            {
+                ViewBag.Mesaj = "Geçersiz Kullanıcı Adı veya Şifre";
+                return View();
+            }
+            
+        }
 
 
-
-
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.RemoveAll();
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public ActionResult kullaniciEkle()
@@ -35,10 +68,6 @@ namespace AracSatisUygulamasi.Controllers
             return Json(adminEkle);
 
         }
-
-
-
-
 
       [HttpGet]
         public ActionResult GetKullaniciList()
