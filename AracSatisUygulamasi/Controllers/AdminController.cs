@@ -6,6 +6,7 @@ using DataEntity;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
+
 namespace AracSatisUygulamasi.Controllers
 {
     public class AdminController : Controller
@@ -39,12 +40,12 @@ namespace AracSatisUygulamasi.Controllers
 
 
 
-        [HttpGet]
+      [HttpGet]
         public ActionResult GetKullaniciList()
         {
             AdminRepository adRep = new AdminRepository();
             var list = adRep.List();
-            return View(list);
+            return View("GetKullaniciList", list);
         }
 
 

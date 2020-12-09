@@ -6,34 +6,69 @@
 }
 
 
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Kategori id</th>
-                <th scope="col">Marka id</th>
-                <th scope="col">Model id</th>
-                <th scope="col">Müşteri id</th>
-                <th scope="col">Adet</th>
-                <th scope="col">Fiyat</th>
-                <th scope="col">Tarih</th>
+<table  id="satisListTable" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Kategori id</th>
+            <th scope="col">Marka id</th>
+            <th scope="col">Model id</th>
+            <th scope="col">Müşteri id</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Tarih</th>
 
-            </tr>
-        </thead>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var k in Model)
         {
-            <tbody>
-                <tr>
-                    <td>@k.ID</td>
-                    <td>@k.KATEGORI_ID</td>
-                    <td>@k.MARKA_ID</td>
-                    <td>@k.MODEL_ID</td>
-                    <td>@k.MUSTERI_ID</td>
-                    <td>@k.ADET</td>
-                    <td>@k.FIYAT</td>
-                    <td>@k.TARIH</td>
+            <tr>
+                <th>@k.ID</th>
+                <th>@k.KATEGORI_ID</th>
+                <th>@k.MARKA_ID</th>
+                <th>@k.MODEL_ID</th>
+                <th>@k.MUSTERI_ID</th>
+                <th>@k.ADET</th>
+                <th>@k.FIYAT</th>
+                <th>@k.TARIH</th>
 
-                </tr>
-            </tbody>
+            </tr>
         }
-    </table>
+    </tbody>
+
+</table>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+@section scripts{
+
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#satisListTable").DataTable({
+                fixedHeader: {
+                    header: true
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: 'Excel <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
+                    },
+
+                    'copy',
+                    'pdf',
+                    'colvis'
+                ],
+            });
+        });
+
+    </script>
+}
