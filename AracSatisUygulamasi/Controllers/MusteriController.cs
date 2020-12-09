@@ -26,13 +26,13 @@ namespace AracSatisUygulamasi.Controllers
             return View();
         }
 
+
         [HttpPost]
         public JsonResult musteriEkle(TBL_MUSTERILER m1)
         {
             MusteriRepository musRep = new MusteriRepository();
             var musteriEkle = musRep.musteriEkle(m1);
             return Json(musteriEkle);
-
         }
     }
 }

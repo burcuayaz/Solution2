@@ -13,13 +13,13 @@ namespace AracSatisUygulamasi.Controllers
             return View();
         }
 
+
         [HttpPost]
         public JsonResult kategoriEkle(TBL_KATEGORILER k1)
         {
             KategoriRepository katRep = new KategoriRepository();
             var kategoriEkle = katRep.kategoriEkle(k1);
             return Json(kategoriEkle);
-
         }
 
 

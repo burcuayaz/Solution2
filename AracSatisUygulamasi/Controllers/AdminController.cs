@@ -18,7 +18,8 @@ namespace AracSatisUygulamasi.Controllers
         {
             return View();
         }
-        // GET: Admin
+        
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
@@ -26,6 +27,7 @@ namespace AracSatisUygulamasi.Controllers
             return View();
         }
       
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(KullaniciDTOs kullanici)
@@ -42,7 +44,6 @@ namespace AracSatisUygulamasi.Controllers
                 ViewBag.Mesaj = "Geçersiz Kullanıcı Adı veya Şifre";
                 return View();
             }
-            
         }
 
 
@@ -54,11 +55,13 @@ namespace AracSatisUygulamasi.Controllers
             return RedirectToAction("Index");
         }
 
+
         [HttpGet]
         public ActionResult kullaniciEkle()
         {
             return View();
         }
+
 
         [HttpPost]
         public JsonResult kullaniciEkle(TBL_KULLANICI k1)
@@ -66,10 +69,10 @@ namespace AracSatisUygulamasi.Controllers
             AdminRepository adRep = new AdminRepository();
             var adminEkle = adRep.kullaniciEkle(k1);
             return Json(adminEkle);
-
         }
 
-      [HttpGet]
+
+        [HttpGet]
         public ActionResult GetKullaniciList()
         {
             AdminRepository adRep = new AdminRepository();

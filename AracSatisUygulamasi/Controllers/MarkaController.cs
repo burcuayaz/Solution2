@@ -23,8 +23,9 @@ namespace AracSatisUygulamasi.Controllers
             };
             var marList = procedures.KATEGORI_ARAC_LIST(prms);
             return View(marList);
-
         }
+
+
         [HttpGet]
         public ActionResult markaEkle()
         {
@@ -33,6 +34,7 @@ namespace AracSatisUygulamasi.Controllers
             ViewBag.kategoriList = a;
             return View();
         }
+
 
         [HttpPost]
         public JsonResult markaEkle(int kategoriList,string MARKA_ADI)
@@ -45,6 +47,5 @@ namespace AracSatisUygulamasi.Controllers
             return Json(markaEkle);
 
         }
-
     }
 }

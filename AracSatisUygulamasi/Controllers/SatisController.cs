@@ -17,6 +17,5 @@ namespace AracSatisUygulamasi.Controllers
             var list = satRep.List();
             return View(list);
         }
-
     }
 }

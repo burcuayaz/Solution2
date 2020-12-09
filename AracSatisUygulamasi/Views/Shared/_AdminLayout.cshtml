@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -8,7 +7,6 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-
     <!-- Title Page-->
     <title>Admin Paneli</title>
 
@@ -39,37 +37,34 @@
 
     <link href="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.css" rel="stylesheet" media="all">
 
-
     <style>
         #errorList {
             color: red;
         }
     </style>
 
-
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
 
-
-
-
         @Html.Partial("_AdminMobileHeader")
-
 
         @Html.Partial("_AdminSidebar")
 
         <!-- PAGE CONTAINER-->
+
         <div class="page-container">
 
             @Html.Partial("_AdminHeader")
+
             <!-- MAIN CONTENT-->
+
             <div class="main-content">
-                @RenderBody()
+
+              @RenderBody()
+
             </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
         </div>
     </div>
     <!-- Jquery JS-->

@@ -13,7 +13,6 @@ namespace AracSatisUygulamasi.Controllers
 {
     public class ModelController : Controller
     {
-        
         // GET: Model
         public ActionResult Index(string Kategori, string Marka)
         {
@@ -25,8 +24,9 @@ namespace AracSatisUygulamasi.Controllers
             };
             var marList = procedures.KATEGORI_MARKA_MODEL_LIST(prms);
             return View(marList);
-
         }
+
+
         public ActionResult ModelDetay(string Kategori, string Marka, string Model)
         {
             Procedures procedures = new Procedures();
@@ -39,12 +39,6 @@ namespace AracSatisUygulamasi.Controllers
             var modList = procedures.MODEL_DETAY_SAYFASI(prms);
             return View(modList);
         }
-
-
-
-       
-
-
     }
 }
 
