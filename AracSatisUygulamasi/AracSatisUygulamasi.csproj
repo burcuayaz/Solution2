@@ -507,6 +507,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\loading.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -728,7 +729,7 @@
     <Content Include="Views\Marka\Index.cshtml" />
     <Content Include="Views\Model\Index.cshtml" />
     <Content Include="Views\Model\ModelDetay.cshtml" />
-    <Content Include="Views\Admin\GetKullaniciList.cshtml" />
+    <Content Include="Views\Admin\GetKullaniciListView.cshtml" />
     <Content Include="Views\Musteri\GetMusteriList.cshtml" />
     <Content Include="Views\Musteri\musteriEkle.cshtml" />
     <Content Include="Views\Marka\markaEkle.cshtml" />

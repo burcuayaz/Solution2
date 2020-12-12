@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "GetKullaniciList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+
+<link href="~/Content/loading.css" rel="stylesheet" />
+<div class="modal"><!-- Place at bottom of page --></div>
+
+<table id="GetKullaniciList" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Kullanıcı Adı</th>
+            <th scope="col">Şifre</th>
+        </tr>
+    </thead>
+</table>
+@section scripts{
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        $.ajax({
+            "url": "GetKullaniciListJson",
+            "type": "GET",
+            "datatype": 'json',
+            "beforeSend": function () {
+                // setting a timeout
+                $("body").addClass("loading");
+                console.log("istek atıldıı");
+            },
+            "complete": function () {
+                $("body").removeClass("loading"); 
+                console.log("istek tamamlandı");
+
+            },
+            "success": function (response) {
+
+                $('#GetKullaniciList').DataTable({
+                    data: response.data,  // Get the data object
+                    columns: [
+                        { 'data': 'ID' },
+                        { 'data': 'AD' },
+                        { 'data': 'SOYAD' },
+                        { 'data': 'MAIL' },
+                        { 'data': 'TELEFON' },
+                        { 'data': 'KULLANICI_ADI' },
+                        { 'data': 'SIFRE' },
+                    ], fixedHeader: {
+                        header: true
+                    },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: 'Excel <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
+                        },
+                        {
+                            extend: 'pdf',
+                            text: 'PDF <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>'
+                        },
+
+                        'copy',
+                        'pdf',
+                        'colvis'
+                    ],
+                });
+            }
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+
+        <tbody>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <th>@k.ID</th>
+                    <th>@k.AD</th>
+                    <th>@k.SOYAD</th>
+                    <th>@k.MAIL</th>
+                    <th>@k.TELEFON</th>
+                    <th>@k.KULLANICI_ADI</th>
+                    <th>@k.SIFRE</th>
+                </tr>
+            }
+        </tbody>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/v/bs-3.3.6/jqc-1.12.3/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-html5-1.2.2/b-print-1.2.2/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.1.3/r-2.1.0/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#kullaniciListTable").DataTable({
+                    
+                });
+            });
+
+        </script>
+    }
+
+*@

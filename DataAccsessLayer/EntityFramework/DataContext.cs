@@ -1,4 +1,5 @@
-﻿using DataEntity;
+﻿
+using DataEntity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,6 +16,8 @@ namespace DataAccsessLayer.EntityFramework
         public DataContext()
             : base("name=dataContext")
         {
+            this.Configuration.ProxyCreationEnabled = false;
+
         }
 
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -102,11 +105,7 @@ namespace DataAccsessLayer.EntityFramework
                 .Property(e => e.FIYAT)
                 .HasPrecision(28, 2);
 
-            modelBuilder.Entity<TBL_MODEL>()
-                .HasMany(e => e.TBL_SATIS)
-                .WithRequired(e => e.TBL_MODEL)
-                .HasForeignKey(e => e.MODEL_ID)
-                .WillCascadeOnDelete(false);
+            
 
             modelBuilder.Entity<TBL_MUSTERILER>()
                 .Property(e => e.ADSOYAD)

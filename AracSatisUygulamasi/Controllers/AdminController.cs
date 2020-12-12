@@ -1,9 +1,10 @@
-﻿
-using DataAccsessLayer.Abstract;
+﻿using DataAccsessLayer.Abstract;
 using DataAccsessLayer.DTOs;
+using DataAccsessLayer.EntityFramework;
 using DataAccsessLayer.EntityRepositories;
 using DataEntity;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -72,12 +73,15 @@ namespace AracSatisUygulamasi.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult GetKullaniciList()
-        {
+        public JsonResult GetKullaniciListJson()
+        {     
             AdminRepository adRep = new AdminRepository();
-            var list = adRep.List();
-            return View("GetKullaniciList", list);
+            return Json(new { data =  adRep.List()}, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult GetKullaniciListView()
+        {
+            return View();
         }
 
 

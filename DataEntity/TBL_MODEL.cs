@@ -10,13 +10,13 @@ namespace DataEntity
     using System;
     using System.Collections.Generic;
 
-  //  [Validator(typeof(ModelValidator))]
+    //  [Validator(typeof(ModelValidator))]
     public partial class TBL_MODEL
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TBL_MODEL()
         {
-            this.TBL_SATIS = new HashSet<TBL_SATIS>();
+
         }
 
         public int ID { get; set; }
@@ -35,8 +35,7 @@ namespace DataEntity
 
         public virtual TBL_KATEGORILER TBL_KATEGORILER { get; set; }
         public virtual TBL_MARKA TBL_MARKA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBL_SATIS> TBL_SATIS { get; set; }
     }
+     
 }
 

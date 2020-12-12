@@ -87,6 +87,15 @@
     <Compile Include="EntityRepositories\ModelRepository.cs" />
     <Compile Include="EntityRepositories\MusteriRepository.cs" />
     <Compile Include="EntityRepositories\SatisRepository.cs" />
+    <Compile Include="Migrations\202012011643184_InitialCreate.cs" />
+    <Compile Include="Migrations\202012011643184_InitialCreate.designer.cs">
+      <DependentUpon>202012011643184_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012111134384_InitialCreate11122020.cs" />
+    <Compile Include="Migrations\202012111134384_InitialCreate11122020.designer.cs">
+      <DependentUpon>202012111134384_InitialCreate11122020.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProdecureModels\ProdecureModels.cs" />
     <Compile Include="Procedures\Procedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,7 +107,14 @@
     <Compile Include="Validation\FluentValidation\MusteriValidator.cs" />
     <Compile Include="Validation\FluentValidation\SatisValidator.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012011643184_InitialCreate.resx">
+      <DependentUpon>202012011643184_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111134384_InitialCreate11122020.resx">
+      <DependentUpon>202012111134384_InitialCreate11122020.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

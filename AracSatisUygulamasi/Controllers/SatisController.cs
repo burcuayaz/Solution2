@@ -13,6 +13,7 @@ namespace AracSatisUygulamasi.Controllers
         [HttpGet]
         public ActionResult GetSatisList()
         {
+          // ses  gitti
             SatisRepository satRep = new SatisRepository();
             var list = satRep.List();
             return View(list);

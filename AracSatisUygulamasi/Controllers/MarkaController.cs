@@ -47,5 +47,7 @@ namespace AracSatisUygulamasi.Controllers
             return Json(markaEkle);
 
         }
+
+
     }
 }

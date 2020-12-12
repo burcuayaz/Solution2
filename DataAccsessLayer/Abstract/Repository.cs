@@ -22,7 +22,7 @@ namespace DataAccsessLayer.Abstract
         public int Delete(T obj)
         {
             _objectSet.Remove(obj);
-            return Save();
+            return _dbContext.SaveChanges();
         }
 
         public T GetById(int Id)

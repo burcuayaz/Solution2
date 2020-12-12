@@ -29,9 +29,9 @@ namespace DataAccsessLayer.EntityRepositories
             return modelList;
         }
 
-
         
-             
+
+
     }
 
 

@@ -39,6 +39,26 @@ namespace AracSatisUygulamasi.Controllers
             var modList = procedures.MODEL_DETAY_SAYFASI(prms);
             return View(modList);
         }
+
+
+        
+        public JsonResult Sil(int modId)
+        {
+            ModelRepository modRep = new ModelRepository();
+            var modelSil = modRep.IGet(x => x.ID == modId);
+            modRep.Delete(modelSil);
+            return Json(modRep.Save(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Guncelle(int modId)
+        {
+            ModelRepository modRep = new ModelRepository();
+            var modelGuncelle = modRep.IGet(x => x.ID == modId);
+            modRep.Update(modelGuncelle);
+            modRep.Save();
+            return RedirectToAction("Index");
+        }
+
     }
 }
 

@@ -24,7 +24,7 @@ namespace DataEntity
 
         public virtual TBL_KATEGORILER TBL_KATEGORILER { get; set; }
         public virtual TBL_MARKA TBL_MARKA { get; set; }
-        public virtual TBL_MODEL TBL_MODEL { get; set; }
+      
         public virtual TBL_MUSTERILER TBL_MUSTERILER { get; set; }
     }
 }
