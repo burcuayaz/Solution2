@@ -1,0 +1,147 @@
+﻿
+@model DataEntity.TBL_MODEL
+@{
+    ViewBag.Title = "modelEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <form id="myForm" class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label for="formGroupInputLarge1" class="col-sm-2 control-label">Model Adı</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.MODEL_ADI, new { @class = "form-control", placeholder = "Lütfen model adınızı giriniz..", tabindex = 1 })
+                @Html.ValidationMessageFor(m => m.MODEL_ADI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupInputLarge1" class="col-sm-2 control-label">Kategoriler</label>
+            <div class="col-sm-10">
+                @Html.DropDownList("kategoriList", (IEnumerable<SelectListItem>)ViewBag.kategoriList, new { id = "kategoriList", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Marka</label>
+            <div class="col-sm-10">
+                @Html.DropDownList("markaList", (IEnumerable<SelectListItem>)ViewBag.markaList, new { id = "markaList", @class = "form-control" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Tarih</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.TARIH, new { @class = "form-control", @type = "date", placeholder = "Lütfen tarih giriniz..", tabindex = 5 })
+                @Html.ValidationMessageFor(m => m.TARIH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupInputLarge1" class="col-sm-2 control-label">Motor Hacmi</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.MOTOR_HACMI, new { @class = "form-control", placeholder = "Lütfen motor hacmi giriniz..", tabindex = 5 })
+                @Html.ValidationMessageFor(m => m.MOTOR_HACMI)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge1" class="col-sm-2 control-label">Vites Türü</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.VITES_TURU, new { @class = "form-control", @type = "password", placeholder = "Lütfen vites türünü giriniz..", tabindex = 6 })
+                @Html.ValidationMessageFor(m => m.VITES_TURU)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Renk</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.RENK, new { @class = "form-control", placeholder = "Lütfen renk giriniz..", tabindex = 3 })
+                @Html.ValidationMessageFor(m => m.RENK)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Motor Gücü</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.MOTOR_GUCU, new { @class = "form-control", placeholder = "Lütfen motor gücü ekleyiniz..", tabindex = 3 })
+                @Html.ValidationMessageFor(m => m.MOTOR_GUCU)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Fiyat</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control", placeholder = "Lütfen fiyat giriniz..", tabindex = 3 })
+                @Html.ValidationMessageFor(m => m.FIYAT)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Resim</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.RESIM, new { @class = "form-control", placeholder = "Lütfen görsel ekleyiniz..", tabindex = 3 })
+                @Html.ValidationMessageFor(m => m.RESIM)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupInputLarge2" class="col-sm-2 control-label">Açıklama</label>
+            <div class="col-sm-10">
+                @Html.TextAreaFor(m => m.ACIKLAMA, new { @class = "form-control", placeholder = "Lütfen açıklama ekleyiniz..", tabindex = 3 })
+                @Html.ValidationMessageFor(m => m.ACIKLAMA)
+            </div>
+        </div>
+        <div id="errorList"></div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Kaydet</button>
+            </div>
+        </div>
+    </form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+        $("#myForm").on("submit", function (event) {
+            event.preventDefault();
+            var obj = $('form#myForm').serializeJSON();
+            console.log(obj);
+            $("#errorList").empty();
+
+            $.ajax({
+                url: "modelEkle",
+                type: "POST",
+                contentType: 'application/json',
+                data: obj,
+                success: function (response) {
+                    console.log(response.Data);//başarılı ise    resposenin içine geri donen veri gelir
+                    if (response.Code == "1") {  // eğer bir ise başarılı
+                        swal({
+                            title: "Başarılı!",  //üst başlık
+                            text: response.Data.Message,  //responsenin içinde gelen mesaj
+                            icon: "success",   // iconun türü
+                            buttons: true,    //tamam dedikten sonra ekranı yenilemesi için reload kodu ekledim.
+                        }).then((willDelete) => {
+                            location.reload();
+                        });;
+
+                    }
+                    else {
+                        var sub_ul = $('<ul/>');
+                        $.each(response.Data, function (index, value) {
+                            var sub_li = $('<li/>').html(value.Message);
+                            sub_ul.append(sub_li);
+                        });
+                        $("#errorList").append(sub_ul);
+                    }
+
+
+                },
+                error: function (data) {
+                    console.log(data); //hata aldığımızda
+                }
+            });
+
+        });
+    </script>
+
+}
+

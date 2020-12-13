@@ -738,6 +738,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Musteri\GetMusteriListView.cshtml" />
     <Content Include="Views\Satis\GetSatisListView.cshtml" />
+    <Content Include="Views\Model\modelEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

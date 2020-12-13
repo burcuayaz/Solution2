@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202012111134384_InitialCreate11122020.designer.cs">
       <DependentUpon>202012111134384_InitialCreate11122020.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012131728212_modelguncellm.cs" />
+    <Compile Include="Migrations\202012131728212_modelguncellm.designer.cs">
+      <DependentUpon>202012131728212_modelguncellm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProdecureModels\ProdecureModels.cs" />
     <Compile Include="Procedures\Procedures.cs" />
@@ -113,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012111134384_InitialCreate11122020.resx">
       <DependentUpon>202012111134384_InitialCreate11122020.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131728212_modelguncellm.resx">
+      <DependentUpon>202012131728212_modelguncellm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

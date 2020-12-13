@@ -41,7 +41,6 @@ namespace AracSatisUygulamasi.Controllers
         }
 
 
-        
         public JsonResult Sil(int modId)
         {
             ModelRepository modRep = new ModelRepository();
@@ -49,6 +48,40 @@ namespace AracSatisUygulamasi.Controllers
             modRep.Delete(modelSil);
             return Json(modRep.Save(), JsonRequestBehavior.AllowGet);
         }
+
+
+        [HttpGet]
+        public ActionResult modelEkle()
+        {
+            KategoriRepository repoKategori = new KategoriRepository();
+            var a = repoKategori.List().Select(x => new SelectListItem { Text = x.KATEGORI_ADI, Value = x.ID.ToString() }).ToList();
+            MarkaRepository repoMarka = new MarkaRepository();
+            var b = repoMarka.List().Select(x => new SelectListItem { Text = x.MARKA_ADI, Value = x.ID.ToString() }).ToList();
+            ViewBag.kategoriList = a;
+            ViewBag.markaList = b;
+            return View();
+        }
+
+
+        [HttpPost]
+        public JsonResult modelEkle( int kategoriList, int markaList, String MODEL_ADI)
+        {
+            ModelRepository modRep = new ModelRepository();
+            var modelEkle = modRep.modelEkle(new TBL_MODEL
+            {
+                KATEGORI_ID = kategoriList,
+                MARKA_ID=markaList,
+                MODEL_ADI = MODEL_ADI
+            });
+            return Json(modelEkle);
+        }
+
+        
+       
+
+
+
+
 
         public ActionResult Guncelle(int modId)
         {

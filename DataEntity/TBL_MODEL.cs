@@ -29,8 +29,8 @@ namespace DataEntity
         public string RENK { get; set; }
         public Nullable<int> MOTOR_GUCU { get; set; }
         public decimal FIYAT { get; set; }
-        //   public string RESİM { get; set; }
-        //    public string ACIKLAMA { get; set; }
+          public string RESIM { get; set; }
+          public string ACIKLAMA { get; set; }
 
 
         public virtual TBL_KATEGORILER TBL_KATEGORILER { get; set; }

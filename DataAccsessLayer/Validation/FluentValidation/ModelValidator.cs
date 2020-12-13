@@ -1,5 +1,4 @@
-﻿
-using DataEntity;
+﻿using DataEntity;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
