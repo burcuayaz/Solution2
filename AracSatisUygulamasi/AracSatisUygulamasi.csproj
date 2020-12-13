@@ -736,6 +736,8 @@
     <Content Include="Views\Satis\GetSatisList.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Musteri\GetMusteriListView.cshtml" />
+    <Content Include="Views\Satis\GetSatisListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

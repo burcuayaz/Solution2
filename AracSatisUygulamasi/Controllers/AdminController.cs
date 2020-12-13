@@ -72,13 +72,13 @@ namespace AracSatisUygulamasi.Controllers
             return Json(adminEkle);
         }
 
-
         public JsonResult GetKullaniciListJson()
         {     
             AdminRepository adRep = new AdminRepository();
             return Json(new { data =  adRep.List()}, JsonRequestBehavior.AllowGet);
 
         }
+
         public ActionResult GetKullaniciListView()
         {
             return View();

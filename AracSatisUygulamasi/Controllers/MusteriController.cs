@@ -11,12 +11,18 @@ namespace AracSatisUygulamasi.Controllers
     public class MusteriController : Controller
     {
         // GET: Musteri
-        [HttpGet]
-        public ActionResult GetMusteriList()
+        public JsonResult GetMusteriListJson()
         {
             MusteriRepository musRep = new MusteriRepository();
             var list = musRep.List();
-            return View(list);
+            return Json(new { data = musRep.List() }, JsonRequestBehavior.AllowGet);
+
+        }
+
+     
+        public ActionResult GetMusteriListView()
+        {
+            return View();
         }
 
 

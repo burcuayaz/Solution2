@@ -10,13 +10,17 @@ namespace AracSatisUygulamasi.Controllers
     public class SatisController : Controller
     {
         // GET: Satis
-        [HttpGet]
-        public ActionResult GetSatisList()
+        public JsonResult GetSatisListJson()
         {
-          // ses  gitti
             SatisRepository satRep = new SatisRepository();
-            var list = satRep.List();
-            return View(list);
+            return Json(new { data = satRep.List() }, JsonRequestBehavior.AllowGet);
+        }
+
+      
+
+        public ActionResult GetSatisListView()
+        {
+            return View();
         }
     }
 }

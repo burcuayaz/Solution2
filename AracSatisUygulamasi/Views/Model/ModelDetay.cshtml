@@ -5,38 +5,38 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-    <div class="d-flex flex-column justify-content-center align-items-center">
+<div class="d-flex flex-column justify-content-center align-items-center">
 
-        <h2>Arac Detay</h2>
-        @if (Model.Count() == 0)
-        {
+    <h2>Arac Detay</h2>
+    @if (Model.Count() == 0)
+    {
 
-             <p class="h5 text-center"> Modele ait araç yok!</p>
-            
-        }
-        @foreach (var k in Model)
-        {
-            <div class="card" style="width: 35rem;">
-                <img class="card-img-top" src="@k.RESIM" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@k.MARKA_ADI</h5>
-                    <p class="card-text">Açıklama:@k.ACIKLAMA</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Renk: @k.RENK</li>
-                    <li class="list-group-item">Motor Hacmi: @k.MOTOR_HACMI</li>
-                    <li class="list-group-item">Motor Gücü: @k.MOTOR_GUCU</li>
-                    <li class="list-group-item">Fiyat: @k.FIYAT</li>
-                    <li class="list-group-item">Vites Türü: @k.VITES_TURU</li>
+        <p class="h5 text-center"> Modele ait araç yok!</p>
 
-                </ul>
-                <div class="card-body">
-                    <input type="submit" name="btn" value="Güncelle" class="btn btn-warning" onclick="guncelleFunc(this)" data-id="@k.MODEL_ID" />
-                    <input type="submit" name="btn" value="Sil" class="btn btn-danger" onclick="silFunc(this)" data-id="@k.MODEL_ID" />
-                </div>
+    }
+    @foreach (var k in Model)
+    {
+        <div class="card" style="width: 35rem;">
+            <img class="card-img-top" src="@k.RESIM" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@k.MARKA_ADI</h5>
+                <p class="card-text">Açıklama:@k.ACIKLAMA</p>
             </div>
-        }
-    </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Renk: @k.RENK</li>
+                <li class="list-group-item">Motor Hacmi: @k.MOTOR_HACMI</li>
+                <li class="list-group-item">Motor Gücü: @k.MOTOR_GUCU</li>
+                <li class="list-group-item">Fiyat: @k.FIYAT</li>
+                <li class="list-group-item">Vites Türü: @k.VITES_TURU</li>
+
+            </ul>
+            <div class="card-body">
+                <input type="submit" name="btn" value="Güncelle" class="btn btn-warning" onclick="guncelleFunc(this)" data-id="@k.MODEL_ID" />
+                <input type="submit" name="btn" value="Sil" class="btn btn-danger" onclick="silFunc(this)" data-id="@k.MODEL_ID" />
+            </div>
+        </div>
+    }
+</div>
 
 
 @section scripts{
@@ -46,14 +46,14 @@
         function silFunc(identifier) {
             var id = $(identifier).attr("data-id");
             console.log($(identifier).parent().parent());// ana divimize ulaştık.
-          
+
             Swal.fire({
                 icon: 'warning',
-                title:`${id} Nolu Modeli silmek istediğinize emin misiniz?`,
+                title: `${id} Nolu Modeli silmek istediğinize emin misiniz?`,
                 showDenyButton: true,
                 confirmButtonText: `Sil`,
                 denyButtonText: `Vazgec`,
-            }).then((result) => {                
+            }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "GET",
@@ -70,3 +70,20 @@
         }
     </script>
 }
+
+@section scripts{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+

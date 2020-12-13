@@ -10,7 +10,6 @@ namespace DataEntity
     using System;
     using System.Collections.Generic;
 
-   // [Validator(typeof(MusteriValidator))]
     public partial class TBL_MUSTERILER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
