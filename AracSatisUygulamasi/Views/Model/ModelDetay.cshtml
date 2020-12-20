@@ -39,6 +39,10 @@
 </div>
 
 
+
+
+
+
 @section scripts{
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -69,21 +73,70 @@
             })
         }
     </script>
-}
 
-@section scripts{
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }
+
+
+
+
+ @*  <script type="text/javascript">
+
+        function guncelleFunc(identifier) {
+
+        $("#myForm").on("submit", function (event) {
+            event.preventDefault();
+            var obj = $('form#myForm').serializeJSON();
+            console.log(obj);
+            $("#errorList").empty();
+
+            $.ajax({
+                url: "Guncelle",
+                type: "POST",
+                contentType: 'application/json',
+                data: obj,
+                success: function (response) {
+                    console.log(response.Data);//başarılı ise    resposenin içine geri donen veri gelir
+                    if (response.Code == "1") {  // eğer bir ise başarılı
+                        swal({
+                            title: "Başarılı!",  //üst başlık
+                            text: response.Data.Message,  //responsenin içinde gelen mesaj
+                            icon: "success",   // iconun türü
+                            buttons: true,    //tamam dedikten sonra ekranı yenilemesi için reload kodu ekledim.
+                        }).then((willDelete) => {
+                            location.reload();
+                        });;
+
+                    }
+                    else {
+                        var sub_ul = $('<ul/>');
+                        $.each(response.Data, function (index, value) {
+                            var sub_li = $('<li/>').html(value.Message);
+                            sub_ul.append(sub_li);
+                        });
+                        $("#errorList").append(sub_ul);
+                    }
+
+
+                },
+                error: function (data) {
+                    console.log(data); //hata aldığımızda
+                }
+            });
+
+        });
+    </script>
+
+
+
+     *@
+
+
+
+
+
+
+
+
+
+
+}
 

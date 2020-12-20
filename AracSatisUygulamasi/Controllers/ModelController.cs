@@ -78,18 +78,13 @@ namespace AracSatisUygulamasi.Controllers
 
         
        
-
-
-
-
-
-        public ActionResult Guncelle(int modId)
+        public JsonResult Guncelle(int modId)
         {
             ModelRepository modRep = new ModelRepository();
             var modelGuncelle = modRep.IGet(x => x.ID == modId);
             modRep.Update(modelGuncelle);
             modRep.Save();
-            return RedirectToAction("Index");
+            return Json(modRep.Save(), JsonRequestBehavior.AllowGet);
         }
 
     }
